@@ -28,10 +28,22 @@ public class ShowScore extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response, Object score)
             throws ServletException, IOException {
         String id=request.getParameter("id");
         String address=null;
+        if(score==null) {
+            address="/WEB-INF/scaore-report/UnknownStudent.jsp";    
+        }else if(Student.getScore()>80){
+            address="/WEB-INF/scaore-report/HighScore.jsp";
+            request.setAttribute("student", student);
+        }else if(Student.getScore()<50){
+            address="/WEB-INF/scaore-report/LowScore.jsp";
+            request.setAttribute("student", student);
+        }else{
+            address="/WEB-INF/scaore-report/NormalScore.jsp";
+            request.setAttribute("student", student);
+        }
         //按照分數選擇頁面
         request.getRequestDispatcher(address).forward(request, response);
     }

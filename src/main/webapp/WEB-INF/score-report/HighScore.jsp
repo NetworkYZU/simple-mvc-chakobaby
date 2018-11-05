@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:useBean id="Student" scope="request"
+                     type="lendle.courses.network.simplemvc.BankCustomer"/>
+        <h1>Hello, <jsp:getProperty name="Student" property="firstName"/></h1>
+        您太厲害了！
         <h1>Hello World!</h1>
     </body>
 </html>

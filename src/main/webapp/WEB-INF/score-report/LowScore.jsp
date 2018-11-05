@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <%
+            StudentScore score=(StudentScore)request.getAttribute("Student");
+        %>
+        <h1>Hello, <%=student.getFirstName()%></h1>
+        注意您的分數！
         <h1>Hello World!</h1>
     </body>
 </html>
